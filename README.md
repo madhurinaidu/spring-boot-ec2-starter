@@ -49,13 +49,13 @@ To push on to the Docker Hub, use this command:
 docker push {docker-hub-username}/spring-boot-app:1.0
 ```
 
-Now, it's time to move on the virtual machine that is AWS EC2 instance. Follow these steps to set up the instance.
+Now, it's time to move on the virtual machine that is AWS EC2 instance. Follow these steps to set up the instance and make sure you choose the free tier since AWS offers paid services for instances.
 
 1. Login into AWS account
 2. Click on Services and then EC2 under Compute
 3. Click on Instances(Running)
 4. Click on Launch Instances
-5. Select the Machine Image from the list(Choose Amazon Linux 2 AMI)
+5. Select the Machine Image from the list
 6. Click on Review and Launch (Make sure you've chosen free tier and not using any paid service)
 7. Click on Launch
 8. Create your new key pair and download it on your machine
