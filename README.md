@@ -17,7 +17,7 @@ Follow these steps for the deployment.
 Project repository:
 
 ```
-git clone https://github.com/rowhyt/spring-boot-aws-starter
+git clone https://github.com/rohytte/spring-boot-aws-starter
 ```
 
 ```
@@ -68,7 +68,7 @@ You'll be entered into the remote shell of your EC2 instance and here you need t
 Now clone the project from the GitHub URL in the EC2 instance terminal.
 
 ```
-git clone https://github.com/rowhyt/spring-boot-aws-starter
+git clone https://github.com/rohytte/spring-boot-aws-starter
 ```
 
 Now pull the Spring Boot project from Docker Hub and also the MySQL Image using below commands
