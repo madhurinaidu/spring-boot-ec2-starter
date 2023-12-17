@@ -1,13 +1,13 @@
-package com.sample;
+package com.app;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class Home {
+public class App {
 
 	public static void main(String[] args) {
-		SpringApplication.run(Home.class, args);
+		SpringApplication.run(App.class, args);
 	}
 
 }

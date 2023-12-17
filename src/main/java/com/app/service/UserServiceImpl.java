@@ -1,9 +1,8 @@
-package com.sample.service;
+package com.app.service;
 
 import java.util.Arrays;
 import java.util.Collection;
 import java.util.stream.Collectors;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -11,11 +10,10 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
-
-import com.sample.model.Role;
-import com.sample.model.User;
-import com.sample.repository.UserRepository;
-import com.sample.web.dto.UserRegistrationDto;
+import com.app.model.Role;
+import com.app.model.User;
+import com.app.repository.UserRepository;
+import com.app.dto.UserRegistrationDto;
 
 @Service
 public class UserServiceImpl implements UserService{
@@ -31,11 +29,9 @@ public class UserServiceImpl implements UserService{
 	}
 
 	@Override
-	public User save(UserRegistrationDto registrationDto) {
-		User user = new User(registrationDto.getFirstName(), 
-				registrationDto.getLastName(), registrationDto.getEmail(),
-				passwordEncoder.encode(registrationDto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
-		
+	public User save(UserRegistrationDto dto) {
+		User user = new User(dto.getFirstName(), dto.getLastName(), dto.getEmail(),
+				passwordEncoder.encode(dto.getPassword()), Arrays.asList(new Role("ROLE_USER")));
 		return userRepository.save(user);
 	}
 
