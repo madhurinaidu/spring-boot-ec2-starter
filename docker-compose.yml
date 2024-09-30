@@ -1,19 +1,32 @@
 version: '3'
 services:
-    springboot:
-        container_name: spring-boot-ec2-starter
-        image: {hub-username}/spring-boot-ec2-starter:1.0
-        ports: 
-        - 8080:8080
-    mysql:
-        container_name: db
-        image: mysql:5.7
-        environment:
-        - MYSQL_ROOT_PASSWORD=root
-        - MYSQL_USER=root
-        - MYSQL_PASSWORD=root
-        - MYSQL_DATABASE=demo
-        volumes:
-        - appvolume:/var/lib/mysql
+  springboot:
+    container_name: spring-boot-ec2-starter
+    image: madhurinaidu/spring-boot-ec2-starter:1.0
+    ports:
+      - "8080:8080"
+    depends_on:
+      - mysql
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:mysql://db:3306/demo?useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: root
+      SPRING_DATASOURCE_PASSWORD: root
+    restart: on-failure
+
+  mysql:
+    container_name: db
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=root
+      - MYSQL_DATABASE=demo
+    volumes:
+      - appvolume:/var/lib/mysql
+    ports:
+      - "3306:3306" 
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s 
+      retries: 5
+
 volumes:
-    appvolume:
+  appvolume:
